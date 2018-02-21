@@ -62,13 +62,13 @@ bmp=backup/dzn_tSFramework/Modules
 	cp $mdp/MissionConditions/Settings.sqf $bmp/MissionConditions/
 
 
-mission file
+# mission file
       cp -r mission.sqm ./backup/
 
-archive
+# archive
       # cd backup/ && tar -zcvf ../backup.tar . && cd -
 
-remove all except the backup
+# remove all except the backup
 sleep 1;
 ls | grep -v backup.tar	| xargs rm -rf
 

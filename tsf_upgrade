@@ -24,16 +24,51 @@ printf  "\n          Gear backup\n \n";
 
 # modules
 printf  "\n          Modules backup\n \n";
-	mkdir -p backup/dzn_tSFramework/Modules/
-	cp -r dzn_tSFramework/Modules backup/dzn_tSFramework/
 
-# mission file
-	cp -r mission.sqm ./backup/
+mdp=dzn_tSFramework/Modules
+bmp=backup/dzn_tSFramework/Modules
+	
+	mkdir -p $bmp/ACEActions/
+	cp $mdp/ACEActions/Settings.sqf $bmp/ACEActions/
 
-# archive
-	cd backup/ && tar -zcvf ../backup.tar . && cd -
+	mkdir -p $bmp/AirborneSupport/
+	cp $mdp/AirborneSupport/Settings.sqf $bmp/AirborneSupport/
 
-# remove all except the backup
+	mkdir -p $bmp/Conversations/
+	cp $mdp/Conversations/Settings.sqf $bmp/Conversations/
+
+	mkdir -p $bmp/EditorRadioSettings/
+	cp $mdp/EditorRadioSettings/Settings.sqf $bmp/EditorRadioSettings/
+
+	mkdir -p $bmp/FARP/
+	cp $mdp/FARP/Settings.sqf $bmp/FARP/
+
+	mkdir -p $bmp/Briefing/
+	cp $mdp/Briefing/Settings.sqf $bmp/Briefing/
+
+	mkdir -p $bmp/CCP/
+	cp $mdp/CCP/Settings.sqf $bmp/CCP/
+
+	mkdir -p $bmp/EditorVehicleCrew/
+	cp $mdp/EditorVehicleCrew/Settings.sqf $bmp/EditorVehicleCrew/
+
+	mkdir -p $bmp/Interactives/
+	cp $mdp/Interactives/Settings.sqf $bmp/Interactives/
+
+	mkdir -p $bmp/IntroText/
+	cp $mdp/IntroText/Settings.sqf $bmp/IntroText/
+
+	mkdir -p $bmp/MissionConditions/
+	cp $mdp/MissionConditions/Settings.sqf $bmp/MissionConditions/
+
+
+mission file
+      cp -r mission.sqm ./backup/
+
+archive
+      # cd backup/ && tar -zcvf ../backup.tar . && cd -
+
+remove all except the backup
 sleep 1;
 ls | grep -v backup.tar	| xargs rm -rf
 

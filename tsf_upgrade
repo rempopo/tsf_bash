@@ -1,0 +1,56 @@
+echo "hello"
+
+printf "  Do you want to UPGRADE to the newest Tactical Shift Framework? \n  Make sure you are currently in mission directory\n"
+
+read -r -p "Everything correct? [y/N] " response
+
+case "$response" in
+[yY][eE][sS]|[yY]) 
+
+#delete trash 
+printf  "\n          Trash removed\n \n";
+	find . -name "*.bak" -type f -delete
+
+# dynai zones
+printf  "\n          Zones backup\n \n";
+	mkdir -p backup/dzn_dynai
+	cp dzn_dynai/Zones.sqf backup/dzn_dynai/
+
+# dzn gear
+printf  "\n          Gear backup\n \n";
+	mkdir -p backup/dzn_gear
+	cp dzn_gear/GearAssignementTable.sqf backup/dzn_gear/
+	cp dzn_gear/Kits.sqf backup/dzn_gear/
+
+# modules
+printf  "\n          Modules backup\n \n";
+	mkdir -p backup/dzn_tSFramework/Modules/
+	cp -r dzn_tSFramework/Modules backup/dzn_tSFramework/Modules/
+# mission file
+	cp -r mission.sqm ./backup/
+
+# archive
+	cd backup/ && tar -zcvf ../backup.tar . && cd -
+
+# remove all except the backup
+sleep 1;
+ls | grep -v backup.tar	| xargs rm -rf
+
+git clone https://github.com/10Dozen/dzn_dynai.git tmp; cd tmp/; sleep 1; cp -r * ../ ; cd ../ ; sleep 1; rm -rf tmp/; printf  "\n          DynAI Installed\n \n";
+sleep 1;
+git clone https://github.com/10Dozen/dzn_commonFunctions.git tmp; cd tmp/; sleep 1; cp -r * ../ ; cd ../ ; sleep 1; rm -rf tmp/; printf  "\n          Common Functions Installed\n \n";
+sleep 1;
+git clone https://github.com/10Dozen/dzn_gear.git tmp; cd tmp/; sleep 1; cp -r * ../ ; cd ../ ; sleep 1; rm -rf tmp/; printf "\n          Gear Installed\n \n";
+sleep 1;
+git clone https://github.com/10Dozen/dzn_tSFramework.git tmp; cd tmp/; sleep 1; cp -r * ../ ; cd ../ ; sleep 1; rm -rf tmp/; printf  "\n          tS Framework Installed\n \n";
+echo -e "\e[92mInstallation complete"
+
+# extract backup
+tar -xf ./backup.tar
+rm backup.tar
+
+;;
+*)
+echo -e "\e[91mAborted"
+;;
+esac

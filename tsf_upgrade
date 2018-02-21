@@ -1,6 +1,6 @@
 echo "hello"
 
-printf "  Do you want to UPGRADE to the newest Tactical Shift Framework? \n  Make sure you are currently in mission directory\n"
+printf "Do you want to UPGRADE to the newest Tactical Shift Framework? \n  Make sure you are currently in mission directory!!!\n"
 
 read -r -p "Everything correct? [y/N] " response
 

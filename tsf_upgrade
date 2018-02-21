@@ -36,6 +36,8 @@ printf  "\n          Modules backup\n \n";
 sleep 1;
 ls | grep -v backup.tar	| xargs rm -rf
 
+printf  "\n          Installation of newest tSF\n \n";
+
 git clone https://github.com/10Dozen/dzn_dynai.git tmp; cd tmp/; sleep 1; cp -r * ../ ; cd ../ ; sleep 1; rm -rf tmp/; printf  "\n          DynAI Installed\n \n";
 sleep 1;
 git clone https://github.com/10Dozen/dzn_commonFunctions.git tmp; cd tmp/; sleep 1; cp -r * ../ ; cd ../ ; sleep 1; rm -rf tmp/; printf  "\n          Common Functions Installed\n \n";

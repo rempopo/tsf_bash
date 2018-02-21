@@ -25,7 +25,8 @@ printf  "\n          Gear backup\n \n";
 # modules
 printf  "\n          Modules backup\n \n";
 	mkdir -p backup/dzn_tSFramework/Modules/
-	cp -r dzn_tSFramework/Modules backup/dzn_tSFramework/Modules/
+	cp -r dzn_tSFramework/Modules backup/dzn_tSFramework/
+
 # mission file
 	cp -r mission.sqm ./backup/
 
